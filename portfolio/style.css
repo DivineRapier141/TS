@@ -5,6 +5,7 @@
 }
 
 body {
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     background-color: #f4f7f6;
     color: #333;
@@ -14,7 +15,7 @@ body {
 }
 
 header {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #1a266c, #0c7dae);
     color: #fff;
     padding: 1.5rem 0;
     text-align: center;
@@ -30,11 +31,19 @@ nav a {
     margin: 0 15px;
     font-weight: bold;
     font-size: 1.1rem;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 nav a:hover {
     color: #3394d4;
     text-decoration: underline;
+    transform: scale(1.1);
+}
+
+hr{
+    margin: 20px;
+    color:#2980b9;
 }
 
 .container {
@@ -45,11 +54,14 @@ nav a:hover {
 }
 
 .card {
-    background: #fff;
+    background: #ffffff;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card h3 {
@@ -57,9 +69,18 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
+.card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 ul {
     list-style-type: square;
     margin-left: 20px;
+}
+
+li {
+    margin-bottom:20px ;
 }
 
 footer {
@@ -68,3 +89,88 @@ footer {
     background-color: #bdc3c7;
     margin: auto 0;
 }
+
+.gradient-text {
+    background: linear-gradient(-45deg, #00c6ff, #0072ff, #222fa3, #0072ff, #00c6ff);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.gradient-text:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    
+    .container {
+        margin: 1rem auto;
+        padding: 0 15px;
+    }
+
+    
+    .card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px; 
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 0;
+        padding: 8px 12px;
+        font-size: 1rem;
+        background-color: rgba(255, 255, 255, 0.1); 
+        border-radius: 5px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .card img, 
+    .card iframe, 
+    .card video {
+        max-width: 100%;
+        height: 270px;
+        border-radius: 8px;
+    }
+    }
+
+    @keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.3s; }
+.card:nth-child(3) { animation-delay: 0.5s; }
+.card:nth-child(4) { animation-delay: 0.7s; }
