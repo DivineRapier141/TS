@@ -1,0 +1,117 @@
+body {
+    background-color: #3b3b3b;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.outer {
+    padding: 20px;
+}
+
+.inner {
+    width: 320px;
+    background-color: #242424;
+    border-radius: 10px;
+    position: relative;
+    padding: 6px;
+    box-sizing: border-box;
+    border: 5px solid #000000;
+}
+
+.hat {
+    width: 250px;
+    background-color: #2a2a2a;
+    margin: auto;
+    padding: 25px 15px;
+    text-align: center;
+    border-radius: 10px;
+    border-bottom: 2px solid #0a0a0a;
+    position: relative;
+    bottom: 15px;
+    z-index: 2;
+}
+
+.hat h2 {
+    color: #40ccff;
+    margin: 0;
+    font-size: 28px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+}
+
+.hat p {
+    color: #8b8a8a;
+    font-size: 11px;
+    margin: 8px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.list {
+    background-color: #1e1e1e;
+}
+
+.list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list li {
+    padding: 15px 20px 15px 60px; 
+    margin-bottom: 5px;
+    color: #e0e0e0;
+    font-size: 15px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #0f0f0f;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.list li .icon {
+    position: absolute;
+    left: 100px;
+    top: 25%;
+    width: 22px;
+    height: 22px;
+    fill: #1f8cb9;
+}
+
+.list button {
+    width: 100%;
+    padding: 16px;
+    background-color: #1f8cb9;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.list button:active {
+    background-color: #007fb9;
+}
+
+.tail {
+    position: absolute;
+    bottom: -22px;
+    left: 27%;
+    background-color: #b0b0b0;
+    width: 140px;
+    height: 24px;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid #555;
+    border-top: none;
+}
+
+.tail::after {
+    content: "Design by SKY";
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: #222;
+    line-height: 22px;
+    font-weight: bold;
+}
