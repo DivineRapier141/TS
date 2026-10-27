@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планувальник тренувань</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container header-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 3-3"/><path d="m2 6 3-3"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+                </div>
+                <div>
+                    <h1>Планувальник тренувань</h1>
+                    <p class="subtitle">Відстежуйте свій спортивний прогрес</p>
+                </div>
+            </div>
+            <button id="addWorkoutBtn" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Нове тренування
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filter-card">
+            <div class="filter-group">
+                <label for="filterType">Тип активності</label>
+                <select id="filterType" class="form-control">
+                    <option value="всі">Усі типи</option>
+                    <option value="біг">Біг</option>
+                    <option value="плавання">Плавання</option>
+                    <option value="силове">Силове тренування</option>
+                    <option value="велосипед">Велосипед</option>
+                    <option value="йога">Йога</option>
+                    <option value="кардіо">Кардіо</option>
+                    <option value="інше">Інше</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filterDate">Дата</label>
+                <input type="date" id="filterDate" class="form-control">
+            </div>
+
+            <button id="resetFiltersBtn" class="btn btn-ghost">Скинути фільтри</button>
+        </section>
+
+        <section class="workouts-section">
+            <div id="workoutsList" class="workouts-grid"></div>
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                </div>
+                <h3>Тренувань не знайдено</h3>
+                <p>Додайте перше тренування або змініть параметри фільтрації.</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="workoutModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Додати тренування</h2>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <form id="workoutForm">
+                <input type="hidden" id="workoutId">
+                
+                <div class="form-group">
+                    <label for="title">Назва тренування</label>
+                    <input type="text" id="title" class="form-control" required placeholder="Наприклад: Ранковий біг у парку">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="type">Тип активності</label>
+                        <select id="type" class="form-control" required>
+                            <option value="біг">Біг</option>
+                            <option value="плавання">Плавання</option>
+                            <option value="силове">Силове тренування</option>
+                            <option value="велосипед">Велосипед</option>
+                            <option value="йога">Йога</option>
+                            <option value="кардіо">Кардіо</option>
+                            <option value="інше">Інше</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Дата</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="duration">Тривалість (хвилини)</label>
+                        <input type="number" id="duration" class="form-control" min="1" required placeholder="45">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="intensity">Інтенсивність</label>
+                        <select id="intensity" class="form-control" required>
+                            <option value="низька">Низька</option>
+                            <option value="середня">Середня</option>
+                            <option value="висока">Висока</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Коментар</label>
+                    <textarea id="comment" class="form-control" rows="3" placeholder="Замітки про тренування..."></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelModalBtn" class="btn btn-secondary">Скасувати</button>
+                    <button type="submit" class="btn btn-primary">Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="javascript/app.js" defer></script>
+</body>
+</html>
