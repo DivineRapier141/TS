@@ -18,11 +18,6 @@ function formatDate(dateStr) {
     const p = dateStr.split('-');
     return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : dateStr;
 }
-function escapeHtml(str) {
-    const d = document.createElement('div');
-    d.textContent = str;
-    return d.innerHTML;
-}
 function renderWorkouts() {
     const typeFilter = $('filterType').value;
     const dateFilter = $('filterDate').value;
@@ -43,12 +38,12 @@ function renderWorkouts() {
                     <span class="workout-type-tag">${w.type}</span>
                     <span class="badge-intensity ${intensityClass}">${w.intensity}</span>
                 </div>
-                <h3 class="workout-title">${escapeHtml(w.title)}</h3>
+                <h3 class="workout-title">${w.title}</h3>
                 <div class="workout-meta">
                     <div class="meta-item"><span class="meta-label">Дата</span><span class="meta-value">${formatDate(w.date)}</span></div>
                     <div class="meta-item"><span class="meta-label">Тривалість</span><span class="meta-value">${w.duration} хв</span></div>
                 </div>
-                ${w.comment ? `<div class="workout-comment">"${escapeHtml(w.comment)}"</div>` : ''}
+                ${w.comment ? `<div class="workout-comment">"${w.comment}"</div>` : ''}
             </div>
             <div class="workout-card-footer">
                 <button class="btn btn-secondary edit-btn">Редагувати</button>
